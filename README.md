@@ -1,15 +1,14 @@
-![](https://github.com/carlos-alberto-silva/rGEDI/blob/master/readme/fig1.png)<br/>
+![](https://github.com/gsalzet/rGEDI/blob/master/readme/fig1.png)<br/>
 
-[![R-CMD-check](https://github.com/carlos-alberto-silva/rGEDI/actions/workflows/r.yml/badge.svg?branch=master)](https://github.com/carlos-alberto-silva/rGEDI/actions/workflows/r.yml)
+[![R-CMD-check](https://github.com/gsalzet/rGEDI/actions/workflows/r.yml/badge.svg?branch=master)](https://github.com/gsalzet/rGEDI/actions/workflows/r.yml)
 [![CRAN](https://www.r-pkg.org/badges/version/rGEDI)](https://cran.r-project.org/package=rGEDI)
 ![Github](https://img.shields.io/badge/Github-0.1.12-green.svg)
-![licence](https://img.shields.io/badge/Licence-GPL--3-blue.svg) 
-![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/rGEDI)
-[![Build Status](https://travis-ci.com/carlos-alberto-silva/rGEDI.svg?token=Jqizwyc6gBxNafNccTdU&branch=master)](https://travis-ci.com/carlos-alberto-silva/rGEDI)
 
 **rGEDI: An R Package for NASA's Global Ecosystem Dynamics Investigation (GEDI) Data Visualizing and Processing.**
 
 Authors: Carlos Alberto Silva, Caio Hamamura, Ruben Valbuena, Steven Hancock, Adrian Cardil, Eben N. Broadbent, Danilo R. A. de Almeida, Celso H. L. Silva Junior and Carine Klauberg  
+
+Adapted by Guillaume Salzet
 
 The rGEDI package provides functions for i) downloading, ii) visualizing, iii) clipping, iv) gridding, iv) simulating and v) exporting GEDI data.
 
@@ -22,7 +21,7 @@ install.packages("rGEDI")
 
 #The development version:
 library(devtools)
-devtools::install_git("https://github.com/carlos-alberto-silva/rGEDI", dependencies = TRUE)
+devtools::install_git("https://github.com/gsalzet/rGEDI", dependencies = TRUE)
 
 # loading rGEDI package
 library(rGEDI)
@@ -57,7 +56,7 @@ gediDownload(filepath=gLevel2B,outdir=outdir)
 
 #** Herein, we are using only a GEDI sample dataset for this tutorial.
 # downloading zip file
-download.file("https://github.com/carlos-alberto-silva/rGEDI/releases/download/datasets/examples.zip",destfile=file.path(outdir, "examples.zip"))
+download.file("https://github.com/gsalzet/rGEDI/releases/download/datasets/examples.zip",destfile=file.path(outdir, "examples.zip"))
 
 # unzip file 
 unzip(file.path(outdir,"examples.zip"))
@@ -96,7 +95,7 @@ level1bGeo_spdf<-SpatialPointsDataFrame(cbind(level1bGeo$longitude_bin0, level1b
 # Exporting level1bGeo as ESRI Shapefile
 raster::shapefile(level1bGeo_spdf,paste0(outdir,"\\GEDI01_B_2019108080338_O01964_T05337_02_003_01_sub"))
 ```
-<img align="right" src="https://github.com/carlos-alberto-silva/rGEDI/blob/master/readme/fig2.PNG"  width="400">
+<img align="right" src="https://github.com/gsalzet/rGEDI/blob/master/readme/fig2.PNG"  width="400">
 
 ```
 
@@ -130,7 +129,7 @@ plot(wf, relative=TRUE, polygon=FALSE, type="l", lwd=2, col="forestgreen",
      xlab="Waveform Amplitude (%)", ylab="Elevation (m)")
 grid()
 ```
-![](https://github.com/carlos-alberto-silva/rGEDI/blob/master/readme/fig3.png)
+![](https://github.com/gsalzet/rGEDI/blob/master/readme/fig3.png)
 
 ## Get GEDI Elevation and Height Metrics (GEDI Level2A)
 ```r
@@ -165,7 +164,7 @@ png("fig8.png", width = 8, height = 6, units = 'in', res = 300)
 plotWFMetrics(gedilevel1b, gedilevel2a, shot_number, rh=c(25, 50, 75, 90))
 dev.off()
 ```
-![](https://github.com/carlos-alberto-silva/rGEDI/blob/master/readme/fig8.png)
+![](https://github.com/gsalzet/rGEDI/blob/master/readme/fig8.png)
 ## Get GEDI Vegetation Biophysical Variables (GEDI Level2B)
 ```r
 level2BVPM<-getLevel2BVPM(gedilevel2b)
@@ -242,7 +241,7 @@ gPAIprofile<-plotPAIProfile(level2BPAIProfile, beam=beam, elev=TRUE)
 gPAVDprofile<-plotPAVDProfile(level2BPAVDProfile, beam=beam, elev=TRUE)
 
 ```
-![](https://github.com/carlos-alberto-silva/rGEDI/blob/master/readme/fig9.png)
+![](https://github.com/gsalzet/rGEDI/blob/master/readme/fig9.png)
 
 
 ## Clip GEDI data (h5 files; gedi.level1b, gedi.level2a and gedi.level2b objects)
@@ -333,7 +332,7 @@ m2<-leaflet() %>%
 
 sync(m1, m2)
 ```
-![](https://github.com/carlos-alberto-silva/rGEDI/blob/master/readme/fig4.png)
+![](https://github.com/gsalzet/rGEDI/blob/master/readme/fig4.png)
 
 ## Compute descriptive statistics of GEDI Level2A and Level2B data
 ```r
@@ -397,7 +396,7 @@ head(cover_metrics_st)
 
 ## Compute Grids with descriptive statistics of GEDI-derived Elevation and Height Metrics (Level2A)
 
-<img align="right" src="https://github.com/carlos-alberto-silva/rGEDI/blob/master/readme/fig5.png" width="300">
+<img align="right" src="https://github.com/gsalzet/rGEDI/blob/master/readme/fig5.png" width="300">
 
 ```r
 # Computing a serie of statistics of GEDI RH100 metric
@@ -437,7 +436,7 @@ dev.off()
 
 ## Compute Grids with descriptive statistics of GEDI-derived Canopy Cover and Vertical Profile Metrics (Level2B)
 
-<img align="right" src="https://github.com/carlos-alberto-silva/rGEDI/blob/master/readme/fig6.png" width="300">
+<img align="right" src="https://github.com/gsalzet/rGEDI/blob/master/readme/fig6.png" width="300">
 
 ```r
 # Computing a serie of statistics of Total Plant Area Index
@@ -516,7 +515,7 @@ xlab="Waveform Amplitude (%)", ylab="Elevation (m)", ylim=c(815,835))
 grid()
 dev.off()
 ```
-![](https://github.com/carlos-alberto-silva/rGEDI/blob/master/readme/fig7.png)
+![](https://github.com/gsalzet/rGEDI/blob/master/readme/fig7.png)
 
 ## Extracting GEDI full-waveform derived metrics without adding noise to the full-waveform
 ```
@@ -587,21 +586,10 @@ GEDI02_Av001. Accessed on February 15 2020 https://lpdaac.usgs.gov/products/gedi
 GEDI02_Bv001. Accessed on February 15 2020 https://lpdaac.usgs.gov/products/gedi02_bv001/  
 GEDI Finder. Accessed on February 15 2020 https://lpdaacsvc.cr.usgs.gov/services/gedifinder
 
-# Acknowledgements
-The University of Maryland and NASA's Goddard Space Flight Center for developing GEDI mission.
-
-We gratefully acknowledge funding from NASA’s Carbon Monitoring Systems, grant NNH15ZDA001N-CMS. Project entitled "Future Mission Fusion for High Biomass Forest Carbon Accounting" led by Dr. Laura Duncanson (lduncans@umd.edu, University of Maryland) and Dr. Lola Fatoyinbo (lola.fatoyinbo@nasa.gov, NASA's Goddard Space Flight Center).
-
-The Brazilian National Council for Scientific and Technological Development (CNPq) for funding the project entitled "Mapping fuel load and simulation of fire behaviour and spread in the Cerrado biome using modeling and remote sensing technologies" and leaded by Prof. Dr. Carine Klauberg (carine_klauberg@hotmail.com) and Dr. Carlos Alberto Silva
-(carlos_engflorestal@outlook.com).
-
-# Reporting Issues 
-Please report any issue regarding the rGEDI package herein https://groups.yahoo.com/neo/groups/rGEDI
-
 # Citing rGEDI
 Silva,C.A; Hamamura,C.; Valbuena, R.; Hancock,S.; Cardil,A.; Broadbent, E. N.; Almeida,D.R.A.; Silva Junior, C.H.L; Klauberg, C. rGEDI: NASA's Global Ecosystem Dynamics Investigation (GEDI) Data Visualization and Processing.
 version 0.1.9, accessed on October. 22 2020, available at: <https://CRAN.R-project.org/package=rGEDI>
 
 # Disclaimer
-**rGEDI package has not been developted by the GEDI team. It comes with no guarantee, expressed or implied, and the authors hold no responsibility for its use or reliability of its outputs.**
+**rGEDI package has not been developed by the GEDI team. It comes with no guarantee, expressed or implied, and the authors hold no responsibility for its use or reliability of its outputs.**
 
