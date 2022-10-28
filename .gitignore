@@ -19,3 +19,5 @@ inst/gdal
 inst/proj
 src/Makevars
 config.status
+.netrc
+GEDI01_B_2019226215413_O03805_04_T02285_02_005_01_V002.h5.curltmp
